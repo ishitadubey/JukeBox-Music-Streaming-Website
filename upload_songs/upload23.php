@@ -32,7 +32,7 @@ if(isset($_POST['upload']))
 <!DOCTYPE html>
 <html>
 <head>
-<title>MusicStream - Create your Jam</title>
+<title>Upload your music</title>
 	<link rel="icon" href="headphones.png" type="image/png">
 <style>
 *{
