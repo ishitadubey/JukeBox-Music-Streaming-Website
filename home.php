@@ -256,7 +256,7 @@ if(!isset($_SESSION['username'])){
                         <li><?php echo $_SESSION['username']; ?></a></li>
                         <li><a href="changepass.php">Change Password</a></li>
                         <li><a href="subs.php">Subscribe</a></li>
-                        <li><a href="FAQs">FAQ</a></li>
+                        <li><a href="faq.php">FAQ</a></li>
                         <li><a href="login.php">Log out</a></li>
                     </ul>
                 </div>
@@ -334,7 +334,7 @@ if(!isset($_SESSION['username'])){
            
         </div>
         <div class="bottom">
-    <a href="form.php" target="_blank" style="text-decoration:none; color:white">Find your jam</a>
+    <a href="audio/upload23.php" target="_blank" style="text-decoration:none; color:white">Share Your Music With The World!</a>
     </div>
     <div class="bottom">
     <a href="form.php" target="_blank" style="text-decoration:none; color:white">Want to know more about the artists?</a>
