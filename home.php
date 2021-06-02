@@ -43,11 +43,7 @@ if(!isset($_SESSION['username'])){
 
         .profile-wrapper {
             float: left;
-            width: 100px;
-            
-            
-           
-            margin-bottom:50px ;
+            width: 170px;
         }
 
        
@@ -56,7 +52,7 @@ if(!isset($_SESSION['username'])){
             content: '';
             position: absolute;
             top: 20px;
-            right: 10px;
+            right: 5px;
             border-color: #eee transparent transparent;
             border-width: 6px;
             border-style: solid;
@@ -66,15 +62,9 @@ if(!isset($_SESSION['username'])){
        
 
         .profile {
-            padding: 15px;
-            
-            
-            
             float: left;
-            border: 2px solid beige;
             border-radius: 2px;
-            box-shadow: 0 1px 0 #555 inset, 0 2px 7px #111;
-            background:rebeccapurple;
+            background:-webkit-linear-gradient(#cc99ff,#99ccff);
         }
 
         .profile:hover {
@@ -105,11 +95,10 @@ if(!isset($_SESSION['username'])){
         }
 
         .menu li {
-            font-size: 16px;
+            font-size: 20px;
            
             font-family: 'Trebuchet MS', sans-serif;
-            margin: 10;
-            padding: 10px 9px;
+            padding: 10px 30px;
         }
 
         .menu li a {
@@ -120,21 +109,14 @@ if(!isset($_SESSION['username'])){
             color: #eee;
         }
 
-        .menu li:hover {
-            border-left: 1px solid whitesmoke;
-            border-right: 1px solid whitesmoke;
-            border-bottom: 1px solid whitesmoke;
-            border-top: 1px solid whitesmoke;
-            border-radius: 3px;
-        }
 
         /* hover profile show menu */
         .profile:hover .menu {
             display: block;
         }
         #icon{
-            width:20px;
-            height:40px;
+            width:60px;
+            height:60px;
         }
  
         img{
@@ -266,17 +248,16 @@ if(!isset($_SESSION['username'])){
                 <!-- user profile -->
                 <div class="profile">
                     <img id="icon"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzUnXd03EW_RgVSHjTWkj0I6pEcH_VgiN86ZbkrnGT-Grl3eix53O8HHh7ZYlMT26b-w8&usqp=CAU" />
+                        src="https://thumbs.dreamstime.com/b/user-profile-icon-creative-trendy-colorful-round-button-illustration-isolated-156511788.jpg"/>
     
     
                     <!-- more menu -->
                     <ul class="menu">
-                        <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
-                        <li><a href="#">Change Password</a></li>
-                        <li><a href="#"><?php echo $_SESSION['phone']; ?></a></li>
-                        <li><a href="subscription.html">Subscribe</a></li>
+                        <li><?php echo $_SESSION['username']; ?></a></li>
+                        <li><a href="changepass.php">Change Password</a></li>
+                        <li><a href="subs.php">Subscribe</a></li>
                         <li><a href="FAQs">FAQ</a></li>
-                        <li><a href="#">Log out</a></li>
+                        <li><a href="login.php">Log out</a></li>
                     </ul>
                 </div>
             </li>
