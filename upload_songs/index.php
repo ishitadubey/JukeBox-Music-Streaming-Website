@@ -204,7 +204,7 @@ input[type="range" i]::-webkit-media-slider-container {
 <body>
 <div class="container mt-3 mb-3">
 <h1>Uploaded Songs</h1>
-<a href="form.php" class="btn btn-primary mt-3" style="text-decoration:none; font-size:18px; ">~Share a new song~</a>
+<a href="upload23.php" class="btn btn-primary mt-3" style="text-decoration:none; font-size:18px; ">~Share a new song~</a>
 <div class="divider"><span></span><span>Songs</span><span></span></div>
 <div class="row">
 <?php
