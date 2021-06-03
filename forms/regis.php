@@ -8,8 +8,7 @@ session_start();
 	<head>
 		<title>MusicStream - Register</title>
 	<link rel="icon" href="headphones.png" type="image/png">
-	<script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	
 		 <?php  include 'C:\xampp\htdocs\signup\style.php' ?> 
 		<?php  include 'C:\xampp\htdocs\signup\links.php' ?>
 	</head>
@@ -58,13 +57,8 @@ if(isset($_POST['submit'])){
 		<article class="card-body mx-auto">
 			<h4 class="card-title mt-3 text-center">Create Account</h4>
 			<p class="text-center">Get started with your free account</p>
-			<p>
-				<a href="" class="btn btn-block btn-gmail"> <i class="fa fa-google"></i>  Login via Gmail</a>
-				<a href="" class="btn btn-block btn-facebook"> <i class="fa fa-facebook-f"></i>   Login via facebook</a>
-			</p>
-			<p class="divider-text">
-				<span class="bg-light">OR</span>
-			</p>
+			
+			
 			<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
@@ -94,9 +88,7 @@ if(isset($_POST['submit'])){
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 								</div>
-								<input class="form-control" placeholder="Create password" type="password" name="password" value="" id="password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" 
-                				title="Must contain at least one  number and one uppercase and lowercase letter, 
-                				and at least 8 or more characters" required>
+								<input class="form-control" placeholder="Create password" type="password" name="password" value="" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 								</div> <!-- form-group// -->
 								<div class="form-group input-group">
 									<div class="input-group-prepend">
