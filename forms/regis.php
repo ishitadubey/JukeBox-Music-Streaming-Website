@@ -41,6 +41,7 @@ if(isset($_POST['submit'])){
 			$insertquery = "insert into registration( username, email, mobile, password, cpassword) values('$username','$email','$mobile','$pass','$cpass')";
 
 			$iquery = mysqli_query($con, $insertquery);
+			echo '<script type="text/javascript">alert("Registered Successfuly.")</script>';
 
 		}else{
 			?>
