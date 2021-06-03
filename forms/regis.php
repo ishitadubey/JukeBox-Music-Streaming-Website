@@ -8,14 +8,16 @@ session_start();
 	<head>
 		<title>MusicStream - Register</title>
 	<link rel="icon" href="headphones.png" type="image/png">
-		 <?php  include 'C:\xampp\htdocs\music-streaming\style.php' ?> 
-		<?php  include 'C:\xampp\htdocs\music-streaming\links.php' ?>
+	<script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		 <?php  include 'C:\xampp\htdocs\signup\style.php' ?> 
+		<?php  include 'C:\xampp\htdocs\signup\links.php' ?>
 	</head>
 	<body>
 
 <?php
 
-include 'C:\xampp\htdocs\music-streaming\dbcon.php';
+include 'C:\xampp\htdocs\signup\dbcon.php';
 
 if(isset($_POST['submit'])){
 	$username = mysqli_real_escape_string($con, $_POST['username']) ;
@@ -57,8 +59,8 @@ if(isset($_POST['submit'])){
 			<h4 class="card-title mt-3 text-center">Create Account</h4>
 			<p class="text-center">Get started with your free account</p>
 			<p>
-				<a href="" class="btn btn-block btn-gmail"> <i class="fa fa-google"></i>  Login via Gmail</a>
-				<a href="" class="btn btn-block btn-facebook"> <i class="fa fa-facebook-f"></i>   Login via facebook</a>
+				<a href="" class="btn btn-block btn-gmail"> <i class="fa fa-google"></i>  Login via Gmail</a>
+				<a href="" class="btn btn-block btn-facebook"> <i class="fa fa-facebook-f"></i>   Login via facebook</a>
 			</p>
 			<p class="divider-text">
 				<span class="bg-light">OR</span>
@@ -68,26 +70,33 @@ if(isset($_POST['submit'])){
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 					</div>
-					<input name="username" class="form-control" placeholder="Username" type="text" required>
+					<input name="username" class="form-control" placeholder="Username" type="text" id="username" pattern="[A-Za-z0-9].{2,}" 
+                	title="Username should be in characters and digits only and greater than 2 characters"  required>
 					</div> <!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 						</div>
-						<input name="email" class="form-control" placeholder="Email address" type="email" required>
+						<input name="email" class="form-control" id="email" 
+                		pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                		autocomplete="off" placeholder="Email address" type="email" required>
 						</div> <!-- form-group// -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 							</div>
-							<input name="mobile" class="form-control" placeholder="Phone number" type="number" required>
+							<input name="mobile" class="form-control" id="phone" 
+                			pattern="^[0-9]{10}$" 
+                			autocomplete="off" placeholder="Phone number" type="number" required>
 							</div> <!-- form-group// -->
 							
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 								</div>
-								<input class="form-control" placeholder="Create password" type="password" name="password" value="" required>
+								<input class="form-control" placeholder="Create password" type="password" name="password" value="" id="password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" 
+                				title="Must contain at least one  number and one uppercase and lowercase letter, 
+                				and at least 8 or more characters" required>
 								</div> <!-- form-group// -->
 								<div class="form-group input-group">
 									<div class="input-group-prepend">
