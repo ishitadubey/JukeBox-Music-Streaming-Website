@@ -1,205 +1,150 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.angularjs.org/1.4.0-rc.1/angular.js"></script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
 
 body{
-  font-family: Arial;
-  font-size: 17px;
-  padding: 8px;
+  background: #fece0c;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  margin: 0 -16px;
-}
-
-.col-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-}
-
-.col-50 {
-  -ms-flex: 50%; /* IE10 */
-  flex: 50%;
-}
-
-.col-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
-}
-
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
-}
-
-.container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-}
-
-input[type=text] {
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 350px;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px rgba(254,236,164,1); 
 }
 
-label {
+.wrapper h2{
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #332902;
+}
+
+.wrapper .input_field{
   margin-bottom: 10px;
-  display: block;
 }
 
-.icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
-}
-
-.btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
+.wrapper .input_field input[type="text"],
+.wrapper textarea{
+  border: 1px solid #e0e0e0;
   width: 100%;
-  border-radius: 3px;
+  padding: 10px;
+}
+
+.wrapper textarea{
+  resize: none;
+  height: 80px;
+}
+
+.wrapper .btn input[type="submit"]{
+  border: 0px;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  background: #fece0c;
+  color: #332902;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 17px;
 }
 
-.btn:hover {
-  background-color: #45a049;
-}
-
-a {
-  color: #2196F3;
-}
-
-hr {
-  border: 1px solid lightgrey;
-}
-
-span.price {
-  float: right;
-  color: grey;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-  .col-25 {
-    margin-bottom: 20px;
-  } 
+#error_message{
+  margin-bottom: 20px;
+  background: #fe8b8e;
+  padding: 0px;
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.5s ease;
 }
 </style>
 </head>
-<body ng-app="validationApp" ng-controller="mainController">
-
-
-<div class="row"  style="padding:100px 300px;">
-  <div class="col-50">
-    <div class="container" >
-      <form  class="form"  action="payscript.php" method="post" style="padding: 25px;">
-      
-        <div class="row" >
-          <div class="col-25">
-            <h3 style="text-align: center;margin:20px 10px;font-family: lato;">Checkout Form</h3>
-          
-            <div class="form-group" ng-class="{ 'has-error' : 
-             co.name.$invalid && !co.name.$pristine }">
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="name" class="form-control" ng-model="name" 
-                   ng-minlength="3" ng-maxlength="14" required placeholder="John M. Doe">
-                   <p ng-show="co.name.$dirty && co.name.$error.required" 
-               class="help-block">Name is required</p>
-            <p ng-show="lco.name.$error.minlength" class="help-block">
-               Name is too short.
-            </p>
-            <p ng-show="co.name.$error.maxlength" class="help-block">
-              Name is too long.
-            </p>
-        </div>
-        <div class="form-group" ng-class="{ 'has-error' :co.userName.$invalid && !co.userName.$pristine }">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com" class="form-control" ng-model="email" ng-pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$">
-            <p 
-          ng-show="co.email.$invalid && !co.email.$pristine" 
-            class="help-block">
-              Enter a valid email.
-            </p>
-        </div>
-            <input type="hidden" value="<?php echo 'OID'.rand(100,1000);?>" name="orderid">
-            <input type="hidden" value="<?php echo 150;?>" name="amount">
-            <div class="form-group" ng-class="{ 'has-error' : co.mobile.$invalid && !co.mobile.$pristine }">
-            <label for="phone"><i class="fa fa-mobile"></i> Mobile</label>
-            <input type="text" id="phone" name="mobile" placeholder="Mobile Number" class="form-control" ng-model="phone" ng-minlength="10" ng-maxlength="10" required>
-             <p ng-show="co.phone.$error.number && co.phone.$error.required" 
-               class="help-block">Address is required</p>
-            <p ng-show="((co.phone.$error.minlength || co.phone.$error.maxlength)&& co.ohone.$dirty)" class="help-block">
-               Phone should be of 10 digits
-            </p>
-			</div>
-            <div class="form-group" ng-class="{ 'has-error' : 
-             co.address.$invalid && !co.adress.$pristine }">  
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" class="form-control" ng-model="address" 
-                   ng-minlength="10" ng-maxlength="40" required>
-                   <p ng-show="co.address.$dirty && co.address.$error.required" 
-               class="help-block">Address is required/p>
-            <p ng-show="co.adress.$error.minlength" class="help-block">
-               Address is too short.
-            </p>
-            <p ng-show="co.address.$error.maxlength" class="help-block">
-              Address is too long.
-            </p>         
-
-
-          
-        </div>
-       
-        <button type="submit"  value="Pay Now" class="btn" ng-disabled="co.$invalid">
-          Pay Now
-        </button>
-      </form>
+<body>
+<input type="hidden" value="<?php echo 'OID'.rand(100,1000);?>" name="orderid">
+    <input type="hidden" value="<?php echo 150;?>" name="amount">
+<div class="wrapper">
+<h2>Contact us</h2>
+  <div id="error_message">
+     
   </div>
- 
+  <form action="payscript.php" id="myform" onsubmit = "return validate();">
+    <div class="input_field">
+        <input type="text" placeholder="Name" id="name" name="name">
+    </div>
+    
+    <div class="input_field">
+        <input type="text" placeholder="Phone" id="phone" name="mobile">
+    </div>
+    <div class="input_field">
+        <input type="text" placeholder="Email" id="email" name="email">
+    </div>
+    
+    <div class="input_field">
+        <textarea placeholder="Address" id="address"></textarea>
+    </div>
+    <div class="btn">
+        <input type="submit" value="Pay Now">
+    </div>
+  </form>
 </div>
 <script>
-    // create angular app
-var validationApp = angular.module('validationApp', []);
+   function validate(){
+  var name = document.getElementById("name").value;
+  
+  var phone = document.getElementById("phone").value;
+  var email = document.getElementById("email").value;
+  var message = document.getElementById("address").value;
+  var error_message = document.getElementById("error_message");
+  
+  error_message.style.padding = "10px";
+  
+  var text;
+  if(name.length < 5){
+    text = "Please Enter valid Name";
+    error_message.innerHTML = text;
+    return false;
+  }
+  
+  if(isNaN(phone) || phone.length != 10){
+    text = "Please Enter valid Phone Number";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(email.indexOf("@") == -1 || email.length < 6){
+    text = "Please Enter valid Email";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(address.length <= 140){
+    text = "Please Enter More Than 140 Characters";
+    error_message.innerHTML = text;
+    return false;
+  }
+  alert("Form Submitted Successfully!");
+  return true;
+}
+</script> 
 
-// create angular controller
-validationApp.controller('mainController', function($scope) {
-
-    // function to submit the form after all validation has occurred            
-    $scope.submitForm = function(isValid) {
-
-        // check to make sure the form is completely valid
-        if (isValid) { 
-            alert('Login Form is valid');
-        }
-    };
-});
-    </script>
 </body>
 </html>
